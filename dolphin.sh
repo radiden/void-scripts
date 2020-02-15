@@ -20,7 +20,9 @@ for i in "${deps[@]}"; do
 	resolvedeps "$i"
 done
 
-elevatepriv "xbps-install $unresolveddeps"
+if [[ $unresolveddeps != "" ]]; then
+	elevatepriv "xbps-install $unresolveddeps"
+fi
 
 [[ ! -d dolphin ]] && git clone $progurl 
 cd $here && cd dolphin
