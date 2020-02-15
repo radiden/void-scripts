@@ -26,7 +26,8 @@ fi
 
 [[ ! -d dolphin ]] && git clone $progurl 
 cd $here && cd dolphin
-git pull
+gitpullout=$(git pull)
+[[ $gitpullout = "Already up to date." ]] && echo $gitpullout && exit
 
 if [[ ! -d build ]]; then
 	mkdir build
